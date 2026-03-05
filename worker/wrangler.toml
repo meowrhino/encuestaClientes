@@ -3,9 +3,7 @@ main = "worker.js"
 compatibility_date = "2024-01-01"
 
 [vars]
-ALLOWED_ORIGIN = "https://meowrhino.github.io"
-# Also allows localhost for testing
-# ALLOWED_ORIGIN = "*"
+ALLOWED_ORIGIN = "*"
 
 # After creating KV namespace with:
 #   wrangler kv namespace create ENCUESTA_KV
