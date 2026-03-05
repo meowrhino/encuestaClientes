@@ -29,7 +29,7 @@
   async function validateDomain() {
     const raw = $('#domainInput').value.trim();
     if (!raw) {
-      showNotification('introduce un dominio', 'error');
+      showNotification(t('enterDomain'), 'error');
       return;
     }
 
@@ -51,13 +51,13 @@
         $('#surveyDomain').textContent = raw;
         showStep('stepSurvey');
       } else {
-        showNotification(data.error || 'dominio no válido', 'error');
+        showNotification(data.error || 'error', 'error');
       }
     } catch {
-      showNotification('error de conexión', 'error');
+      showNotification(t('connectionError'), 'error');
     } finally {
       btn.disabled = false;
-      btn.textContent = 'entrar';
+      btn.textContent = t('enter');
     }
   }
 
@@ -83,7 +83,7 @@
 
     for (const q of QUESTIONS) {
       if (ratings[q] === undefined) {
-        showNotification('selecciona una valoración para cada pregunta', 'error');
+        showNotification(t('selectAll'), 'error');
         return;
       }
     }
@@ -96,7 +96,7 @@
 
     const btn = $('#btnSubmit');
     btn.disabled = true;
-    btn.textContent = 'enviando...';
+    btn.textContent = t('submitting');
 
     try {
       const res = await fetch(`${API_BASE}/api/submit`, {
@@ -110,15 +110,15 @@
       if (data.couponCode) {
         $('#couponCode').textContent = data.couponCode;
         showStep('stepCoupon');
-        showNotification('encuesta enviada', 'success');
+        showNotification(t('surveySent'), 'success');
       } else {
-        showNotification(data.error || 'error al enviar', 'error');
+        showNotification(data.error || t('submitError'), 'error');
       }
     } catch {
-      showNotification('error de conexión', 'error');
+      showNotification(t('connectionError'), 'error');
     } finally {
       btn.disabled = false;
-      btn.textContent = 'enviar encuesta';
+      btn.textContent = t('submit');
     }
   }
 
@@ -131,31 +131,25 @@
     canvas.height = 400;
     const ctx = canvas.getContext('2d');
 
-    // Background
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, 800, 400);
 
-    // Border
     ctx.strokeStyle = '#000000';
     ctx.lineWidth = 3;
     ctx.strokeRect(20, 20, 760, 360);
 
-    // 5% de descuento
     ctx.fillStyle = '#000000';
     ctx.font = 'bold 64px Georgia, serif';
     ctx.textAlign = 'center';
-    ctx.fillText('5% de descuento', 400, 130);
+    ctx.fillText(t('discount'), 400, 130);
 
-    // Code
     ctx.font = '600 28px monospace';
     ctx.fillText(code, 400, 200);
 
-    // Instructions
     ctx.fillStyle = '#999999';
     ctx.font = '18px Georgia, serif';
-    ctx.fillText('cupón válido para un proyecto en meowrhino.studio', 400, 270);
+    ctx.fillText(t('couponImageText'), 400, 270);
 
-    // Branding
     ctx.fillStyle = '#cccccc';
     ctx.font = '14px Georgia, serif';
     ctx.fillText('meowrhino.studio', 400, 350);
@@ -164,7 +158,7 @@
     link.download = `cupon-${code}.png`;
     link.href = canvas.toDataURL('image/png');
     link.click();
-    showNotification('cupón descargado', 'success');
+    showNotification(t('couponDownloaded'), 'success');
   }
 
   // --- Init ---
@@ -176,4 +170,5 @@
   $('#btnSubmit').addEventListener('click', submitSurvey);
   $('#btnDownload').addEventListener('click', downloadCoupon);
   initRatingButtons();
+  initLangSelector();
 })();

@@ -13,7 +13,7 @@
   async function verifyCoupon() {
     const code = $('#codeInput').value.trim().toUpperCase();
     if (!code) {
-      showNotification('introduce un código', 'error');
+      showNotification(t('enterCode'), 'error');
       return;
     }
 
@@ -33,22 +33,22 @@
 
       if (!data.valid) {
         result.classList.add('verify-invalid');
-        $('#resultStatus').textContent = 'cupón no válido';
-        $('#resultDetail').textContent = 'este código no existe en nuestro sistema';
+        $('#resultStatus').textContent = t('couponInvalid');
+        $('#resultDetail').textContent = t('couponInvalidDetail');
       } else if (data.used) {
         result.classList.add('verify-used');
-        $('#resultStatus').textContent = 'cupón ya canjeado';
-        $('#resultDetail').textContent = `canjeado el ${new Date(data.usedAt).toLocaleDateString('es-ES')}`;
+        $('#resultStatus').textContent = t('couponUsed');
+        $('#resultDetail').textContent = `${t('couponUsedAt')} ${new Date(data.usedAt).toLocaleDateString(currentLang === 'en' ? 'en-GB' : currentLang === 'ca' ? 'ca-ES' : 'es-ES')}`;
       } else {
         result.classList.add('verify-valid');
-        $('#resultStatus').textContent = 'cupón válido';
-        $('#resultDetail').textContent = '5% de descuento · disponible para usar';
+        $('#resultStatus').textContent = t('couponValid');
+        $('#resultDetail').textContent = t('couponValidDetail');
       }
     } catch {
-      showNotification('error de conexión', 'error');
+      showNotification(t('connectionError'), 'error');
     } finally {
       btn.disabled = false;
-      btn.textContent = 'verificar';
+      btn.textContent = t('verify');
     }
   }
 
@@ -56,4 +56,5 @@
   $('#codeInput').addEventListener('keydown', (e) => {
     if (e.key === 'Enter') verifyCoupon();
   });
+  initLangSelector();
 })();

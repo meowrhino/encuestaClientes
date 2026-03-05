@@ -510,6 +510,37 @@ td {
 .notification-error { border-left: 3px solid var(--error); }
 .notification-info { border-left: 3px solid var(--text); }
 
+/* Language Selector */
+.lang-selector {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.lang-btn {
+  padding: 0.2rem 0.5rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  font-size: 0.55rem;
+  font-weight: 600;
+  font-family: inherit;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.lang-btn:hover {
+  color: var(--text);
+}
+
+.lang-btn.active {
+  color: var(--text);
+  border-color: var(--border);
+}
+
 /* Branding */
 .branding-badge {
   margin: 3rem 0 2rem;

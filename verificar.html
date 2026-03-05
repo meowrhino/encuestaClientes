@@ -13,12 +13,19 @@
 </head>
 <body>
   <div class="container">
+
+    <div class="lang-selector">
+      <button class="lang-btn" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="ca">CA</button>
+    </div>
+
     <div class="verify-card">
-      <h3>verificar cupón</h3>
-      <p>introduce el código del cupón para comprobar su validez</p>
+      <h3 data-i18n="verifyTitle">verificar cupón</h3>
+      <p data-i18n="verifySubtitle">introduce el código del cupón para comprobar su validez</p>
       <div class="verify-input-group">
-        <input type="text" id="codeInput" placeholder="MR-XXXX-XXXX">
-        <button class="btn-primary" id="btnVerify">verificar</button>
+        <input type="text" id="codeInput" data-i18n-placeholder="codePlaceholder" placeholder="MR-XXXX-XXXX">
+        <button class="btn-primary" id="btnVerify" data-i18n="verify">verificar</button>
       </div>
       <div id="verifyResult" class="verify-result" style="display:none;">
         <div class="result-status" id="resultStatus"></div>
@@ -32,6 +39,7 @@
   </div>
 
   <div id="notification" class="notification"></div>
+  <script src="i18n.js"></script>
   <script src="verificar.js"></script>
 </body>
 </html>

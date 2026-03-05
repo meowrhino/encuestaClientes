@@ -18,14 +18,20 @@
 <body>
   <div class="container">
 
+    <div class="lang-selector">
+      <button class="lang-btn" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="ca">CA</button>
+    </div>
+
     <!-- Step 1: Domain -->
     <div id="stepDomain" class="step active">
       <div class="domain-card">
-        <h3>encuesta de satisfacción</h3>
-        <p>introduce el dominio de tu web para comenzar</p>
+        <h3 data-i18n="surveyTitle">encuesta de satisfacción</h3>
+        <p data-i18n="surveySubtitle">introduce el dominio de tu web para comenzar</p>
         <div class="domain-input-group">
-          <input type="text" id="domainInput" placeholder="ejemplo.com">
-          <button class="btn-primary" id="btnValidate">entrar</button>
+          <input type="text" id="domainInput" data-i18n-placeholder="domainPlaceholder" placeholder="ejemplo.com">
+          <button class="btn-primary" id="btnValidate" data-i18n="enter">entrar</button>
         </div>
       </div>
     </div>
@@ -33,12 +39,12 @@
     <!-- Step 2: Survey -->
     <div id="stepSurvey" class="step">
       <div class="survey-header">
-        <h3>cuéntanos tu experiencia</h3>
+        <h3 data-i18n="tellUs">cuéntanos tu experiencia</h3>
         <p class="survey-domain" id="surveyDomain"></p>
       </div>
 
       <div class="question-card">
-        <h4>valoración general</h4>
+        <h4 data-i18n="general">valoración general</h4>
         <div class="rating-buttons" data-question="general">
           <button class="rating-btn" data-value="0">0</button>
           <button class="rating-btn" data-value="2">2</button>
@@ -47,11 +53,11 @@
           <button class="rating-btn" data-value="8">8</button>
           <button class="rating-btn" data-value="10">10</button>
         </div>
-        <textarea data-comment="general" placeholder="comentario opcional..."></textarea>
+        <textarea data-comment="general" data-i18n-placeholder="commentPlaceholder" placeholder="comentario opcional..."></textarea>
       </div>
 
       <div class="question-card">
-        <h4>valoración del trato</h4>
+        <h4 data-i18n="trato">valoración del trato</h4>
         <div class="rating-buttons" data-question="trato">
           <button class="rating-btn" data-value="0">0</button>
           <button class="rating-btn" data-value="2">2</button>
@@ -60,11 +66,11 @@
           <button class="rating-btn" data-value="8">8</button>
           <button class="rating-btn" data-value="10">10</button>
         </div>
-        <textarea data-comment="trato" placeholder="comentario opcional..."></textarea>
+        <textarea data-comment="trato" data-i18n-placeholder="commentPlaceholder" placeholder="comentario opcional..."></textarea>
       </div>
 
       <div class="question-card">
-        <h4>valoración del diseño</h4>
+        <h4 data-i18n="diseno">valoración del diseño</h4>
         <div class="rating-buttons" data-question="diseno">
           <button class="rating-btn" data-value="0">0</button>
           <button class="rating-btn" data-value="2">2</button>
@@ -73,11 +79,11 @@
           <button class="rating-btn" data-value="8">8</button>
           <button class="rating-btn" data-value="10">10</button>
         </div>
-        <textarea data-comment="diseno" placeholder="comentario opcional..."></textarea>
+        <textarea data-comment="diseno" data-i18n-placeholder="commentPlaceholder" placeholder="comentario opcional..."></textarea>
       </div>
 
       <div class="question-card">
-        <h4>valoración del proceso</h4>
+        <h4 data-i18n="proceso">valoración del proceso</h4>
         <div class="rating-buttons" data-question="proceso">
           <button class="rating-btn" data-value="0">0</button>
           <button class="rating-btn" data-value="2">2</button>
@@ -86,11 +92,11 @@
           <button class="rating-btn" data-value="8">8</button>
           <button class="rating-btn" data-value="10">10</button>
         </div>
-        <textarea data-comment="proceso" placeholder="comentario opcional..."></textarea>
+        <textarea data-comment="proceso" data-i18n-placeholder="commentPlaceholder" placeholder="comentario opcional..."></textarea>
       </div>
 
       <div class="question-card">
-        <h4>valoración del resultado</h4>
+        <h4 data-i18n="resultado">valoración del resultado</h4>
         <div class="rating-buttons" data-question="resultado">
           <button class="rating-btn" data-value="0">0</button>
           <button class="rating-btn" data-value="2">2</button>
@@ -99,21 +105,21 @@
           <button class="rating-btn" data-value="8">8</button>
           <button class="rating-btn" data-value="10">10</button>
         </div>
-        <textarea data-comment="resultado" placeholder="comentario opcional..."></textarea>
+        <textarea data-comment="resultado" data-i18n-placeholder="commentPlaceholder" placeholder="comentario opcional..."></textarea>
       </div>
 
       <div class="submit-wrap">
-        <button class="btn-primary" id="btnSubmit">enviar encuesta</button>
+        <button class="btn-primary" id="btnSubmit" data-i18n="submit">enviar encuesta</button>
       </div>
     </div>
 
     <!-- Step 3: Coupon -->
     <div id="stepCoupon" class="step">
       <div class="coupon-card">
-        <div class="coupon-discount">5% de descuento</div>
-        <div class="coupon-label">gracias por tu valoración</div>
+        <div class="coupon-discount" data-i18n="discount">5% de descuento</div>
+        <div class="coupon-label" data-i18n="thanks">gracias por tu valoración</div>
         <div class="coupon-code" id="couponCode"></div>
-        <button class="btn-primary" id="btnDownload">descargar cupón</button>
+        <button class="btn-primary" id="btnDownload" data-i18n="download">descargar cupón</button>
       </div>
     </div>
 
@@ -123,6 +129,7 @@
   </div>
 
   <div id="notification" class="notification"></div>
+  <script src="i18n.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
