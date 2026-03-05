@@ -93,10 +93,9 @@ body {
 /* Question Cards */
 .question-card {
   background: var(--card);
-  border: 1px solid var(--border);
+  border: none;
   border-radius: var(--radius);
   padding: 1.25rem;
-  box-shadow: var(--shadow);
   margin-bottom: 1rem;
 }
 
@@ -223,24 +222,26 @@ textarea {
   text-align: center;
 }
 
+.coupon-discount {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.75rem;
+}
+
 .coupon-label {
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-muted);
   margin-bottom: 1.5rem;
 }
 
 .coupon-code {
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: 0.85rem;
+  font-weight: 600;
   letter-spacing: 0.1em;
   font-family: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
   margin-bottom: 0.5rem;
-}
-
-.coupon-discount {
-  font-size: 0.8rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
 }
 
 .coupon-instructions {

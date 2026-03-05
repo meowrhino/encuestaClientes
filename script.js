@@ -122,15 +122,49 @@
     }
   }
 
-  // --- Copy Coupon ---
+  // --- Download Coupon ---
 
-  function copyCoupon() {
+  function downloadCoupon() {
     const code = $('#couponCode').textContent;
-    navigator.clipboard.writeText(code).then(() => {
-      showNotification('código copiado', 'success');
-    }).catch(() => {
-      showNotification('no se pudo copiar', 'error');
-    });
+    const canvas = document.createElement('canvas');
+    canvas.width = 800;
+    canvas.height = 400;
+    const ctx = canvas.getContext('2d');
+
+    // Background
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, 800, 400);
+
+    // Border
+    ctx.strokeStyle = '#000000';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(20, 20, 760, 360);
+
+    // 5% de descuento
+    ctx.fillStyle = '#000000';
+    ctx.font = 'bold 64px Georgia, serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('5% de descuento', 400, 130);
+
+    // Code
+    ctx.font = '600 28px monospace';
+    ctx.fillText(code, 400, 200);
+
+    // Instructions
+    ctx.fillStyle = '#999999';
+    ctx.font = '18px Georgia, serif';
+    ctx.fillText('cupón válido para un proyecto en meowrhino.studio', 400, 270);
+
+    // Branding
+    ctx.fillStyle = '#cccccc';
+    ctx.font = '14px Georgia, serif';
+    ctx.fillText('meowrhino.studio', 400, 350);
+
+    const link = document.createElement('a');
+    link.download = `cupon-${code}.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    showNotification('cupón descargado', 'success');
   }
 
   // --- Init ---
@@ -140,6 +174,6 @@
     if (e.key === 'Enter') validateDomain();
   });
   $('#btnSubmit').addEventListener('click', submitSurvey);
-  $('#btnCopy').addEventListener('click', copyCoupon);
+  $('#btnDownload').addEventListener('click', downloadCoupon);
   initRatingButtons();
 })();
