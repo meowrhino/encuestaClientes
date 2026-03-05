@@ -538,7 +538,6 @@ td {
 
 .lang-btn.active {
   color: var(--text);
-  border-color: var(--border);
 }
 
 /* Branding */
