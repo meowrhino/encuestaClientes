@@ -522,7 +522,7 @@ td {
   padding: 0.2rem 0.5rem;
   background: transparent;
   border: 1px solid transparent;
-  border-radius: var(--radius);
+  border-radius: 0;
   font-size: 0.55rem;
   font-weight: 600;
   font-family: inherit;
