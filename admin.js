@@ -1,5 +1,5 @@
 (() => {
-  const API_BASE = 'https://encuesta-worker.meowrhino.workers.dev';
+  const API_BASE = 'https://encuesta-worker.manuellatourf.workers.dev';
   const $ = (s) => document.querySelector(s);
   const $$ = (s) => document.querySelectorAll(s);
 

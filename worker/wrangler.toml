@@ -4,13 +4,15 @@ compatibility_date = "2024-01-01"
 
 [vars]
 ALLOWED_ORIGIN = "https://meowrhino.github.io"
+# Also allows localhost for testing
+# ALLOWED_ORIGIN = "*"
 
 # After creating KV namespace with:
 #   wrangler kv namespace create ENCUESTA_KV
 # Replace the id below with the actual ID
 [[kv_namespaces]]
 binding = "ENCUESTA_KV"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "b3e32656361c47718d08b28182633254"
 
 # Set the admin key as a secret (never in this file):
 #   wrangler secret put ADMIN_KEY
