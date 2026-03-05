@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>encuesta · meowrhino.studio</title>
+  <meta name="description" content="encuesta de satisfacción para clientes de meowrhino.studio">
+  <meta property="og:title" content="encuesta · meowrhino.studio">
+  <meta property="og:description" content="encuesta de satisfacción para clientes de meowrhino.studio">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- Step 1: Domain -->
+    <div id="stepDomain" class="step active">
+      <div class="domain-card">
+        <h3>encuesta de satisfacción</h3>
+        <p>introduce el dominio de tu web para comenzar</p>
+        <div class="domain-input-group">
+          <input type="text" id="domainInput" placeholder="ejemplo.com">
+          <button class="btn-primary" id="btnValidate">entrar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Survey -->
+    <div id="stepSurvey" class="step">
+      <div class="survey-header">
+        <h3>cuéntanos tu experiencia</h3>
+        <p class="survey-domain" id="surveyDomain"></p>
+      </div>
+
+      <div class="question-card">
+        <h4>valoración general</h4>
+        <div class="rating-buttons" data-question="general">
+          <button class="rating-btn" data-value="0">0</button>
+          <button class="rating-btn" data-value="2">2</button>
+          <button class="rating-btn" data-value="4">4</button>
+          <button class="rating-btn" data-value="6">6</button>
+          <button class="rating-btn" data-value="8">8</button>
+          <button class="rating-btn" data-value="10">10</button>
+        </div>
+        <textarea data-comment="general" placeholder="comentario opcional..."></textarea>
+      </div>
+
+      <div class="question-card">
+        <h4>valoración del trato</h4>
+        <div class="rating-buttons" data-question="trato">
+          <button class="rating-btn" data-value="0">0</button>
+          <button class="rating-btn" data-value="2">2</button>
+          <button class="rating-btn" data-value="4">4</button>
+          <button class="rating-btn" data-value="6">6</button>
+          <button class="rating-btn" data-value="8">8</button>
+          <button class="rating-btn" data-value="10">10</button>
+        </div>
+        <textarea data-comment="trato" placeholder="comentario opcional..."></textarea>
+      </div>
+
+      <div class="question-card">
+        <h4>valoración del diseño</h4>
+        <div class="rating-buttons" data-question="diseno">
+          <button class="rating-btn" data-value="0">0</button>
+          <button class="rating-btn" data-value="2">2</button>
+          <button class="rating-btn" data-value="4">4</button>
+          <button class="rating-btn" data-value="6">6</button>
+          <button class="rating-btn" data-value="8">8</button>
+          <button class="rating-btn" data-value="10">10</button>
+        </div>
+        <textarea data-comment="diseno" placeholder="comentario opcional..."></textarea>
+      </div>
+
+      <div class="question-card">
+        <h4>valoración del proceso</h4>
+        <div class="rating-buttons" data-question="proceso">
+          <button class="rating-btn" data-value="0">0</button>
+          <button class="rating-btn" data-value="2">2</button>
+          <button class="rating-btn" data-value="4">4</button>
+          <button class="rating-btn" data-value="6">6</button>
+          <button class="rating-btn" data-value="8">8</button>
+          <button class="rating-btn" data-value="10">10</button>
+        </div>
+        <textarea data-comment="proceso" placeholder="comentario opcional..."></textarea>
+      </div>
+
+      <div class="question-card">
+        <h4>valoración del resultado</h4>
+        <div class="rating-buttons" data-question="resultado">
+          <button class="rating-btn" data-value="0">0</button>
+          <button class="rating-btn" data-value="2">2</button>
+          <button class="rating-btn" data-value="4">4</button>
+          <button class="rating-btn" data-value="6">6</button>
+          <button class="rating-btn" data-value="8">8</button>
+          <button class="rating-btn" data-value="10">10</button>
+        </div>
+        <textarea data-comment="resultado" placeholder="comentario opcional..."></textarea>
+      </div>
+
+      <div class="submit-wrap">
+        <button class="btn-primary" id="btnSubmit">enviar encuesta</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Coupon -->
+    <div id="stepCoupon" class="step">
+      <div class="coupon-card">
+        <div class="coupon-label">gracias por tu valoración</div>
+        <div class="coupon-code" id="couponCode"></div>
+        <div class="coupon-discount">5% de descuento</div>
+        <p class="coupon-instructions">este cupón es para regalar a un amigo. compártelo y ambos salís ganando.</p>
+        <button class="btn-secondary" id="btnCopy">copiar código</button>
+      </div>
+    </div>
+
+    <div class="branding-badge">
+      <a href="https://meowrhino.studio" target="_blank" rel="noopener">meowrhino.studio</a>
+    </div>
+  </div>
+
+  <div id="notification" class="notification"></div>
+  <script src="script.js"></script>
+</body>
+</html>

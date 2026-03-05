@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>admin · encuesta</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- Auth Gate -->
+    <div id="authGate">
+      <div class="auth-card">
+        <h3>admin</h3>
+        <div class="auth-input-group">
+          <input type="password" id="adminKeyInput" placeholder="clave de acceso">
+          <button class="btn-primary" id="btnLogin">entrar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="adminPanel" style="display:none;">
+      <div class="admin-header">
+        <h3>panel de administración</h3>
+        <button class="btn-secondary" id="btnLogout">salir</button>
+      </div>
+
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab="clients">clientes</button>
+        <button class="tab-btn" data-tab="surveys">encuestas</button>
+        <button class="tab-btn" data-tab="coupons">cupones</button>
+      </div>
+
+      <!-- Clients Tab -->
+      <div class="tab-panel active" id="tabClients">
+        <div class="add-client-form">
+          <input type="text" id="newClientDomain" placeholder="dominio del cliente">
+          <button class="btn-primary" id="btnAddClient">añadir</button>
+        </div>
+        <div class="admin-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>dominio</th>
+                <th>añadido</th>
+              </tr>
+            </thead>
+            <tbody id="clientsBody"></tbody>
+          </table>
+        </div>
+        <div id="clientsEmpty" class="empty-state" style="display:none;">sin clientes registrados</div>
+      </div>
+
+      <!-- Surveys Tab -->
+      <div class="tab-panel" id="tabSurveys">
+        <div class="admin-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>dominio</th>
+                <th>general</th>
+                <th>trato</th>
+                <th>diseño</th>
+                <th>proceso</th>
+                <th>resultado</th>
+                <th>fecha</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="surveysBody"></tbody>
+          </table>
+        </div>
+        <div id="surveysEmpty" class="empty-state" style="display:none;">sin encuestas completadas</div>
+      </div>
+
+      <!-- Coupons Tab -->
+      <div class="tab-panel" id="tabCoupons">
+        <div class="admin-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>código</th>
+                <th>dominio</th>
+                <th>creado</th>
+                <th>estado</th>
+              </tr>
+            </thead>
+            <tbody id="couponsBody"></tbody>
+          </table>
+        </div>
+        <div id="couponsEmpty" class="empty-state" style="display:none;">sin cupones generados</div>
+      </div>
+    </div>
+
+    <div class="branding-badge">
+      <a href="https://meowrhino.studio" target="_blank" rel="noopener">meowrhino.studio</a>
+    </div>
+  </div>
+
+  <div id="notification" class="notification"></div>
+  <script src="admin.js"></script>
+</body>
+</html>

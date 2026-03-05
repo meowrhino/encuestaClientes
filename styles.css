@@ -1,0 +1,563 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #ffffff;
+  --card: #ffffff;
+  --text: #000000;
+  --text-muted: #999999;
+  --border: rgba(0, 0, 0, 0.12);
+  --border-hover: rgba(0, 0, 0, 0.35);
+  --success: #059669;
+  --error: #dc2626;
+  --radius: 4px;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  font-family: 'Inknut Antiqua', Georgia, 'Times New Roman', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Steps */
+.step { display: none; }
+.step.active { display: block; }
+
+/* Domain Card (Step 1) */
+.domain-card {
+  background: var(--card);
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.domain-card h3 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.domain-card p {
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  margin-bottom: 1.5rem;
+}
+
+.domain-input-group {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.domain-input-group input {
+  flex: 1;
+}
+
+/* Survey Header */
+.survey-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.survey-header h3 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.survey-domain {
+  color: var(--text-muted);
+  font-size: 0.65rem;
+}
+
+/* Question Cards */
+.question-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+}
+
+.question-card h4 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* Rating Buttons */
+.rating-buttons {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.rating-btn {
+  flex: 1;
+  padding: 0.5rem 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: inherit;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text);
+}
+
+.rating-btn:hover {
+  border-color: var(--border-hover);
+}
+
+.rating-btn.active {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+/* Inputs & Textareas */
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 0.7rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.7rem;
+  font-family: inherit;
+  letter-spacing: 0.03em;
+  background: white;
+  color: var(--text);
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--border-hover);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+/* Buttons */
+.btn-primary {
+  padding: 0.6rem 1.4rem;
+  background: var(--text);
+  color: var(--bg);
+  border: 1px solid var(--text);
+  border-radius: var(--radius);
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: inherit;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #333;
+  border-color: #333;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  padding: 0.5rem 1.2rem;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.65rem;
+  font-weight: 600;
+  font-family: inherit;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--border-hover);
+}
+
+.submit-wrap {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* Coupon Card (Step 3) */
+.coupon-card {
+  background: var(--card);
+  border: 1.5px solid var(--text);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.coupon-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.coupon-code {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  font-family: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+  margin-bottom: 0.5rem;
+}
+
+.coupon-discount {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.coupon-instructions {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  max-width: 380px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Verify Card */
+.verify-card {
+  background: var(--card);
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.verify-card h3 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.verify-card > p {
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  margin-bottom: 1.5rem;
+}
+
+.verify-input-group {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 360px;
+  margin: 0 auto 1.5rem;
+}
+
+.verify-input-group input {
+  flex: 1;
+  text-transform: uppercase;
+  font-family: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+  letter-spacing: 0.08em;
+}
+
+.verify-result {
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.verify-result .result-status {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.verify-result .result-detail {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+.verify-valid { border-color: var(--success); }
+.verify-valid .result-status { color: var(--success); }
+
+.verify-used,
+.verify-invalid { border-color: var(--error); }
+.verify-used .result-status,
+.verify-invalid .result-status { color: var(--error); }
+
+/* Admin */
+.auth-card {
+  background: var(--card);
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.auth-card h3 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.auth-input-group {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.auth-input-group input {
+  flex: 1;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.admin-header h3 {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Tabs */
+.tab-bar {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.tab-btn {
+  padding: 0.4rem 0.8rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  font-size: 0.65rem;
+  font-weight: 600;
+  font-family: inherit;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  color: var(--text);
+}
+
+.tab-btn.active {
+  color: var(--text);
+  border-color: var(--border);
+  background: var(--card);
+}
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* Add client form */
+.add-client-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.add-client-form input {
+  flex: 1;
+}
+
+/* Tables */
+.admin-table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.6rem;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+td {
+  color: var(--text);
+}
+
+.btn-redeem {
+  padding: 0.25rem 0.6rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.55rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text);
+}
+
+.btn-redeem:hover {
+  border-color: var(--border-hover);
+}
+
+.badge-used {
+  color: var(--text-muted);
+  font-size: 0.55rem;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  padding: 2rem 1rem;
+}
+
+/* Survey detail (admin) */
+.survey-comments {
+  display: none;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: #fafafa;
+  border-radius: var(--radius);
+  font-size: 0.55rem;
+  color: var(--text-muted);
+}
+
+.survey-comments.show { display: block; }
+
+.btn-toggle-comments {
+  background: none;
+  border: none;
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: underline;
+}
+
+/* Notifications */
+.notification {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.65rem 1rem;
+  box-shadow: var(--shadow-hover);
+  max-width: 360px;
+  font-size: 0.65rem;
+  font-family: inherit;
+  letter-spacing: 0.03em;
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.notification-success { border-left: 3px solid var(--success); }
+.notification-error { border-left: 3px solid var(--error); }
+.notification-info { border-left: 3px solid var(--text); }
+
+/* Branding */
+.branding-badge {
+  margin: 3rem 0 2rem;
+  text-align: center;
+  font-size: 0.65rem;
+}
+
+.branding-badge a {
+  color: var(--text-muted);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  letter-spacing: 0.05em;
+}
+
+.branding-badge a:hover {
+  color: var(--text);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body { padding: 1rem 0.75rem; }
+
+  .domain-card,
+  .verify-card,
+  .auth-card { padding: 2rem 1rem; }
+
+  .domain-input-group,
+  .verify-input-group,
+  .auth-input-group,
+  .add-client-form {
+    flex-direction: column;
+  }
+
+  .rating-buttons {
+    flex-wrap: wrap;
+  }
+
+  .rating-btn {
+    min-width: calc(33% - 0.3rem);
+  }
+
+  .notification {
+    right: 1rem;
+    left: 1rem;
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .branding-badge { margin: 2rem 0 1.5rem; }
+}
