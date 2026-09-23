@@ -1,7 +1,9 @@
 # encuestaClientes está en pausa (2026-09-23)
 
-Se borró el KV `ENCUESTA_KV` (id `b3e32656361c47718d08b28182633254`) para
-ordenar la cuenta de Cloudflare. Idea para más adelante: reseñas de clientes
+Se borraron el KV `ENCUESTA_KV` (id `b3e32656361c47718d08b28182633254`) y el
+worker `encuesta-worker` (con su secret `ADMIN_KEY`) para ordenar la cuenta de
+Cloudflare. El front apunta a `encuesta-worker.manuellatourf.workers.dev`: al
+volver a desplegar con el mismo nombre, la URL es la misma. Idea para más adelante: reseñas de clientes
 en la web de meowrhino.studio (becasDigMeow).
 
 El contenido (5 clientes, 3 cupones, 3 encuestas, una de ellas real) está en
